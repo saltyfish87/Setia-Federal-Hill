@@ -117,7 +117,7 @@ export const INITIAL_CONTENT: AppContent = {
     description: "Discover Parkside Residence at Setia Federal Hill, Kuala Lumpur. Luxury bespoke apartments in Bangsar starting from RM650k. Experience premium urban living near KL Sentral. Book your private viewing now.",
     keywords: "Parkside Residence, Setia Federal Hill, Bangsar Luxury Condo, KL Sentral Property, SP Setia KL, New Property Bangsar 2024, Kuala Lumpur Real Estate, Elite Homes Malaysia",
     favicon: "https://picsum.photos/seed/parkside-favicon/32/32",
-    googleVerification: "",
+    googleVerification: "lr6xI3xd4NTi1aBbVOrVO19BPJsw9yNVDJ1FC4JGmEQ",
     ogImage: "https://picsum.photos/seed/parkside-og/1200/630"
   }
 };

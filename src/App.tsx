@@ -58,7 +58,7 @@ export default function App() {
           <meta name="description" content={content.seo.description} />
           <meta name="keywords" content={content.seo.keywords} />
           <link rel="icon" type="image/png" href={content.seo.favicon} />
-          <meta name="google-site-verification" content={content.seo.googleVerification} />
+          <meta name="google-site-verification" content={content.seo.googleVerification || INITIAL_CONTENT.seo.googleVerification} />
           
           {/* Open Graph / Social */}
           <meta property="og:title" content={content.seo.title} />

@@ -54,26 +54,35 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     };
   }, []);
 
-  // AUTO-SYNC: Force the 9 layouts into Firestore without overwriting other sections
+  // AUTO-SYNC: Force the 9 layouts and SEO updates into Firestore without overwriting other sections
   useEffect(() => {
     const syncData = async () => {
-      // Only run if we are logged in as admin and layouts are missing in DB
-      if (user && isAdmin && loading === false && content.layouts.length < 9) {
-        console.log("Database out of sync. Upgrading layouts...");
-        try {
-          // Merge current content with the new layouts to preserve user's other photos/edits
-          const updatedContent = {
-            ...content,
-            layouts: INITIAL_CONTENT.layouts
-          };
-          await setDoc(doc(db, 'config', 'content'), updatedContent);
-        } catch (e) {
-          console.error("Auto-sync failed:", e);
+      // Only run if we are logged in as admin
+      if (user && isAdmin && loading === false) {
+        const needsLayoutsSync = content.layouts.length < 9;
+        const needsSeoSync = !content.seo.googleVerification && INITIAL_CONTENT.seo.googleVerification;
+
+        if (needsLayoutsSync || needsSeoSync) {
+          console.log("Database out of sync. Upgrading content...");
+          try {
+            // Merge current content with the new values
+            const updatedContent = {
+              ...content,
+              layouts: needsLayoutsSync ? INITIAL_CONTENT.layouts : content.layouts,
+              seo: {
+                ...content.seo,
+                googleVerification: content.seo.googleVerification || INITIAL_CONTENT.seo.googleVerification
+              }
+            };
+            await setDoc(doc(db, 'config', 'content'), updatedContent);
+          } catch (e) {
+            console.error("Auto-sync failed:", e);
+          }
         }
       }
     };
     syncData();
-  }, [user, isAdmin, loading, content.layouts.length]);
+  }, [user, isAdmin, loading, content.layouts.length, content.seo.googleVerification]);
 
   const login = async () => {
     await signInWithPopup(auth, googleProvider);

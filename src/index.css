@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  
+  --color-prestige-cream: #fdfcfb;
+  --color-prestige-onyx: #0f0f0f;
+  --color-prestige-gold: #b19470;
+  --color-prestige-champagne: #f4efea;
+  --color-prestige-forest: #1b2a22;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-prestige-cream text-prestige-onyx font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-light tracking-tight;
+  }
+
+  img {
+    @apply transition-all duration-700 cursor-zoom-in hover:scale-[1.02];
+  }
+}
+
+.serif {
+  @apply font-serif;
+}
+
+.luxury-button {
+  @apply px-10 py-4 bg-prestige-onyx text-white rounded-none transition-all duration-500 hover:bg-prestige-gold disabled:opacity-50 font-sans font-medium tracking-[0.2em] uppercase text-[10px];
+}
+
+.luxury-input {
+  @apply w-full px-6 py-4 bg-transparent border-b border-gray-200 focus:outline-none focus:border-prestige-gold transition-all font-sans text-sm;
+}
+
+.section-padding {
+  @apply py-32 px-6 md:px-16 lg:px-32;
+}
+
+.editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2rem;
+}
+
+.oval-mask {
+  clip-path: ellipse(50% 50% at 50% 50%);
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-prestige-gold);
+}

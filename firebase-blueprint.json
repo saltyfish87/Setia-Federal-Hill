@@ -1,0 +1,44 @@
+{
+  "entities": {
+    "appContent": {
+      "title": "App Content",
+      "description": "The dynamic content for the landing page",
+      "type": "object",
+      "properties": {
+        "projectName": { "type": "string" },
+        "hero": { "type": "object" },
+        "overview": { "type": "object" },
+        "features": { "type": "array" },
+        "facilities": { "type": "array" },
+        "layouts": { "type": "array" },
+        "location": { "type": "object" },
+        "gallery": { "type": "array" },
+        "agent": { "type": "object" },
+        "legal": { "type": "object" },
+        "seo": { "type": "object" }
+      }
+    },
+    "inquiry": {
+      "title": "Inquiry",
+      "description": "User leads from the inquiry form",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email", "phone"]
+    }
+  },
+  "firestore": {
+    "/config/content": {
+      "schema": "appContent",
+      "description": "Global application content configuration"
+    },
+    "/inquiries/{inquiryId}": {
+      "schema": "inquiry",
+      "description": "Storage for user lead inquiries"
+    }
+  }
+}

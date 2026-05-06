@@ -1,0 +1,51 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Reuseable helpers
+    function isSignedIn() { return request.auth != null; }
+    function isAdmin() { 
+      return isSignedIn() && 
+             request.auth.token.email == 'saltyfish1987@gmail.com' && 
+             request.auth.token.email_verified == true; 
+    }
+    function isValidId(id) { return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$'); }
+    function incoming() { return request.resource.data; }
+    function existing() { return resource.data; }
+
+    // Validation for App Content
+    function isValidAppContent(data) {
+      return data.projectName is string && data.projectName.size() <= 100 &&
+             data.hero is map && data.overview is map &&
+             data.features is list && data.facilities is list &&
+             data.layouts is list && data.location is map &&
+             data.gallery is list && data.agent is map &&
+             data.legal is map && data.seo is map;
+    }
+
+    // Validation for Inquiries
+    function isValidInquiry(data) {
+      return data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             data.email is string && data.email.size() > 0 && data.email.size() <= 100 &&
+             data.phone is string && data.phone.size() > 0 && data.phone.size() <= 20 &&
+             data.createdAt is timestamp;
+    }
+
+    // CMS Content security
+    match /config/content {
+      allow read: if true; 
+      allow write: if isAdmin() && isValidAppContent(incoming());
+    }
+
+    // Lead Inquiries security
+    match /inquiries/{inquiryId} {
+      allow create: if isValidId(inquiryId) && isValidInquiry(incoming()) && incoming().createdAt == request.time;
+      allow read, update, delete: if isAdmin();
+    }
+  }
+}

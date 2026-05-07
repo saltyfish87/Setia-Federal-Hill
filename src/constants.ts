@@ -12,13 +12,13 @@ export const INITIAL_CONTENT: AppContent = {
     title: "A Masterpiece of Bespoke Living",
     subtitle: "SETIA FEDERAL HILL — KUALA LUMPUR",
     description: "Discover a sanctuary of architectural excellence and natural tranquility. An address defined by its 5-acre central park and seamless global connectivity.",
-    image: "https://picsum.photos/seed/parkside-ultra/1920/1080",
+    image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1920",
     ctaText: "Arrange Consultation"
   },
   overview: {
     title: "The Zenith of Urban Tranquility",
     description: "Parkside Residence is the crown jewel of the Setia Federal Hill masterplan. A collaboration of mastery between SP Setia and Mitsui Fudosan, this 62-storey beacon of luxury sets a new global benchmark for transit-oriented, sustainable living.",
-    image: "https://picsum.photos/seed/parkside-estate/1200/800",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1200",
     stats: [
       { label: "COLLECTION", value: "693 Residencies" },
       { label: "LEGACY", value: "Q1 2030" },
@@ -31,37 +31,37 @@ export const INITIAL_CONTENT: AppContent = {
       id: "f1",
       title: "Botanical Solitude",
       description: "Immediate access to a lush 5-acre Central Park, a rare verdant expanse in the heart of the capital.",
-      image: "https://picsum.photos/seed/botanic/600/600"
+      image: "https://images.unsplash.com/photo-1585938389612-a552a28d6914?auto=format&fit=crop&q=80&w=600"
     },
     {
       id: "f2",
       title: "Global Gateway",
       description: "Seamless sheltered transit to Bangsar LRT and KL Sentral, connecting you to the world via the ERL.",
-      image: "https://picsum.photos/seed/gateway/600/600"
+      image: "https://images.unsplash.com/photo-1549497538-306180173e8a?auto=format&fit=crop&q=80&w=600"
     },
     {
       id: "f3",
       title: "Sustainable Mastery",
       description: "Achieving LEED Platinum and GreenRE Gold standards through innovative, planet-conscious design.",
-      image: "https://picsum.photos/seed/platinum/600/600"
+      image: "https://images.unsplash.com/photo-1518005020251-58296d8f81ad?auto=format&fit=crop&q=80&w=600"
     },
     {
       id: "f4",
       title: "Private Sky Lounge",
       description: "Exclusive social spaces for residents on the 62nd floor with unobstructed 360° city panoramas.",
-      image: "https://picsum.photos/seed/skylounge/600/600"
+      image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=600"
     },
     {
       id: "f5",
       title: "Artisanal Interiors",
       description: "Curated finishings featuring Italian marble and European oak, crafted for the discerning eye.",
-      image: "https://picsum.photos/seed/interior/600/600"
+      image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=600"
     },
     {
       id: "f6",
       title: "Smart Living Ecosystem",
       description: "State-of-the-art home automation and touchless guest management for effortless security.",
-      image: "https://picsum.photos/seed/smart/600/600"
+      image: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&q=80&w=600"
     }
   ],
   facilities: [
@@ -93,10 +93,10 @@ export const INITIAL_CONTENT: AppContent = {
     ]
   },
   gallery: [
-    { id: "g1", url: "https://picsum.photos/seed/luxury-lobby/1200/800", title: "The Arrival Hall" },
-    { id: "g2", url: "https://picsum.photos/seed/luxury-view/800/1200", title: "Skyline Vistas" },
-    { id: "g3", url: "https://picsum.photos/seed/luxury-bed/1000/1000", title: "Master Suite" },
-    { id: "g4", url: "https://picsum.photos/seed/luxury-pool/1400/800", title: "Infinite Serenity" }
+    { id: "g1", url: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1200", title: "The Arrival Hall" },
+    { id: "g2", url: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800", title: "Skyline Vistas" },
+    { id: "g3", url: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=1000", title: "Master Suite" },
+    { id: "g4", url: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&q=80&w=1400", title: "Infinite Serenity" }
   ],
   agent: {
     name: "Yee Woei Shyan",

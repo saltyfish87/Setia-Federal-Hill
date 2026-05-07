@@ -165,6 +165,8 @@ export default function App() {
                 alt="Parkside Residence Hero" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
+                fetchPriority="high"
+                decoding="async"
               />
             </motion.div>
 
@@ -238,6 +240,8 @@ export default function App() {
                     src={content.overview.image || null} 
                     alt="Lush surroundings" 
                     className="w-full h-[500px] md:h-[700px] object-cover rounded-none oval-mask"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute -bottom-8 -left-8 bg-prestige-onyx text-white p-12 hidden lg:block max-w-md">
                     <p className="font-serif italic text-2xl mb-2">“A rare fusion of emerald landscapes and architectural precision.”</p>
@@ -273,6 +277,8 @@ export default function App() {
                         src={feature.image || null} 
                         alt={feature.title} 
                         className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                     <div className="absolute -top-4 -right-4 w-10 h-10 bg-prestige-onyx text-white rounded-full flex items-center justify-center font-serif text-sm border border-prestige-gold/30">
@@ -368,6 +374,8 @@ export default function App() {
                       alt={selectedLayout.type} 
                       className="max-w-full h-auto object-contain max-h-[500px] mb-16 grayscale hover:grayscale-0 transition-all duration-1000 cursor-zoom-in"
                       onClick={() => { setSelectedGalleryImg({ url: selectedLayout.image, title: `${selectedLayout.type} - ${selectedLayout.size}` }); setIsGalleryOpen(true); }}
+                      loading="lazy"
+                      decoding="async"
                     />
                     <div className="text-center">
                       <p className="font-serif text-2xl italic mb-4">“{selectedLayout.description}”</p>
@@ -422,6 +430,8 @@ export default function App() {
                     src={content.location.mapImage || null} 
                     alt="Strategic Location" 
                     className="w-full h-[400px] md:h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 border-[16px] md:border-[24px] border-prestige-cream/30 pointer-events-none" />
                 </motion.div>
@@ -456,6 +466,8 @@ export default function App() {
                     src={item.url || null} 
                     alt={item.title} 
                     className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:scale-110 group-hover:grayscale-0"
+                    loading="lazy"
+                    decoding="async"
                    />
                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-end p-12">
                      <p className="text-white font-serif text-xl italic">{item.title}</p>

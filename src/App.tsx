@@ -60,6 +60,38 @@ export default function App() {
           <link rel="icon" type="image/png" href={content.seo.favicon} />
           <meta name="google-site-verification" content={content.seo.googleVerification || INITIAL_CONTENT.seo.googleVerification} />
           
+          {/* Structured Data (JSON-LD) - Real Estate Listing */}
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ApartmentComplex",
+              "name": "Parkside Residence Setia Federal Hill",
+              "description": content.seo.description,
+              "image": content.hero.image,
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Bangsar",
+                "addressRegion": "Kuala Lumpur",
+                "addressCountry": "MY"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "3.1293",
+                "longitude": "101.6811"
+              },
+              "url": "https://setiafederalhill-parkside.my",
+              "brand": {
+                "@type": "Brand",
+                "name": "Setia Federal Hill"
+              },
+              "amenityFeature": content.facilities.map(f => ({
+                "@type": "LocationFeatureSpecification",
+                "name": f.title,
+                "value": true
+              }))
+            })}
+          </script>
+
           {/* Open Graph / Social */}
           <meta property="og:title" content={content.seo.title} />
           <meta property="og:description" content={content.seo.description} />
@@ -162,7 +194,7 @@ export default function App() {
               <div className="absolute inset-0 bg-prestige-onyx/30 z-10" />
               <img 
                 src={content.hero.image || null} 
-                alt="Parkside Residence Hero" 
+                alt="Luxury living at Parkside Residence Setia Federal Hill Bangsar Kuala Lumpur" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
                 fetchPriority="high"
@@ -238,7 +270,7 @@ export default function App() {
                 >
                   <img 
                     src={content.overview.image || null} 
-                    alt="Lush surroundings" 
+                    alt="Parkside Residence Setia Federal Hill - 5-Acre Central Park View" 
                     className="w-full h-[500px] md:h-[700px] object-cover rounded-none oval-mask"
                     loading="lazy"
                     decoding="async"
@@ -275,7 +307,7 @@ export default function App() {
                     <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border border-prestige-gold/20 transition-all duration-700 group-hover:scale-105 group-hover:border-prestige-gold">
                       <img 
                         src={feature.image || null} 
-                        alt={feature.title} 
+                        alt={`${feature.title} - Parkside Residence Luxury Feature`} 
                         className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0"
                         loading="lazy"
                         decoding="async"
@@ -371,7 +403,7 @@ export default function App() {
                   >
                     <img 
                       src={selectedLayout.image || null} 
-                      alt={selectedLayout.type} 
+                      alt={`${selectedLayout.type} Floorplan - ${selectedLayout.size} Luxury Apartment Bangsar`} 
                       className="max-w-full h-auto object-contain max-h-[500px] mb-16 grayscale hover:grayscale-0 transition-all duration-1000 cursor-zoom-in"
                       onClick={() => { setSelectedGalleryImg({ url: selectedLayout.image, title: `${selectedLayout.type} - ${selectedLayout.size}` }); setIsGalleryOpen(true); }}
                       loading="lazy"
@@ -428,7 +460,7 @@ export default function App() {
                 >
                   <img 
                     src={content.location.mapImage || null} 
-                    alt="Strategic Location" 
+                    alt="Strategic Map: Parkside Residence near Bangsar LRT and KL Sentral" 
                     className="w-full h-[400px] md:h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-1000"
                     loading="lazy"
                     decoding="async"
@@ -464,7 +496,7 @@ export default function App() {
                  >
                    <img 
                     src={item.url || null} 
-                    alt={item.title} 
+                    alt={`${item.title} - Interior view of Parkside Residence Luxury Condo`} 
                     className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:scale-110 group-hover:grayscale-0"
                     loading="lazy"
                     decoding="async"

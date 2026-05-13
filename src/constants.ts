@@ -113,9 +113,9 @@ export const INITIAL_CONTENT: AppContent = {
     managementDisclaimer: "This curated collection is managed by Yee Woei Shyan (REN 46505) of IQI Agency. Privately presented for discerning investors."
   },
   seo: {
-    title: "Parkside Residence Setia Federal Hill | Luxury Living in Bangsar & KL Sentral",
-    description: "Discover Parkside Residence at Setia Federal Hill, Kuala Lumpur. Luxury bespoke apartments in Bangsar starting from RM650k. Experience premium urban living near KL Sentral. Book your private viewing now.",
-    keywords: "Parkside Residence, Setia Federal Hill, Bangsar Luxury Condo, KL Sentral Property, SP Setia KL, New Property Bangsar 2024, Kuala Lumpur Real Estate, Elite Homes Malaysia",
+    title: "Parkside Residence Setia Federal Hill | Luxury Condo Bangsar & KL Sentral",
+    description: "Own a piece of prestige at Parkside Residence, Setia Federal Hill. Luxury bespoke apartments in Bangsar near KL Sentral, starting from RM650k. 5-Acre Central Park & 360° Skyline Views. Direct developer access.",
+    keywords: "Parkside Residence Setia Federal Hill, Bangsar Luxury Condo for Sale, KL Sentral Property investment, Setia Federal Hill Malaysia, SP Setia Mitsui Fudosan Bangsar, Luxury Suite Kuala Lumpur, New Launch Property Bangsar 2024, High End Home Bangsar, Transit Oriented Development KL",
     favicon: "https://picsum.photos/seed/parkside-favicon/32/32",
     googleVerification: "lr6xI3xd4NTi1aBbVOrVO19BPJsw9yNVDJ1FC4JGmEQ",
     ogImage: "https://picsum.photos/seed/parkside-og/1200/630"

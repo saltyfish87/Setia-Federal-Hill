@@ -617,7 +617,7 @@ export default function App() {
         </AnimatePresence>
 
         {/* Admin floating button */}
-        {(!user || isAdmin || window.location.hostname.includes('ais-dev') || window.location.hostname === 'localhost') && (
+        {(isAdmin || window.location.hostname.includes('ais-dev') || window.location.hostname === 'localhost') && (
           <button 
             onClick={() => setIsAdminPanelOpen(true)}
             className="fixed bottom-12 right-12 z-50 p-6 bg-prestige-onyx text-white border border-white/10 hover:bg-prestige-gold transition-all duration-500 shadow-2xl"
@@ -631,7 +631,9 @@ export default function App() {
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="fixed bottom-12 right-32 z-50 p-6 bg-[#25D366] text-white shadow-2xl hover:scale-110 transition-all duration-500 border border-white/10"
+          className={`fixed bottom-12 z-50 p-6 bg-[#25D366] text-white shadow-2xl hover:scale-110 transition-all duration-500 border border-white/10 ${
+            (isAdmin || window.location.hostname.includes('ais-dev') || window.location.hostname === 'localhost') ? 'right-32' : 'right-12'
+          }`}
         >
           <MessageCircle className="w-6 h-6" />
         </a>

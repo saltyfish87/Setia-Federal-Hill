@@ -7,7 +7,7 @@ import { AppContent } from './types';
 
 export const INITIAL_CONTENT: AppContent = {
   projectName: "Parkside Residence",
-  logo: "https://picsum.photos/seed/parkside-logo/200/50",
+  logo: "",
   hero: {
     title: "A Masterpiece of Bespoke Living",
     subtitle: "SETIA FEDERAL HILL — KUALA LUMPUR",
@@ -71,20 +71,20 @@ export const INITIAL_CONTENT: AppContent = {
     { id: "fac4", title: "Executive Atelier", icon: "Laptop", description: "A sophisticated co-working environment for global professionals." }
   ],
   layouts: [
-    { id: "la", type: "Type A", size: "485 sq ft", description: "Modern Studio / 1 Bedroom designed for the minimalist professional.", image: "https://picsum.photos/seed/parkside-a/800/600" },
-    { id: "lb", type: "Type B", size: "689 sq ft", description: "Spacious 1 Bedroom residence with expansive floor-to-ceiling vistas.", image: "https://picsum.photos/seed/parkside-b/800/600" },
-    { id: "lc1", type: "Type C1", size: "646 sq ft", description: "Bespoke 2 Bedrooms layout crafted for urban dual-living comfort.", image: "https://picsum.photos/seed/parkside-c1/800/600" },
-    { id: "lc2", type: "Type C2", size: "732 sq ft", description: "Refined 2 Bedrooms suite offering a perfect balance of space and light.", image: "https://picsum.photos/seed/parkside-c2/800/600" },
-    { id: "ld1", type: "Type D1", size: "872 sq ft", description: "Versatile 2+1 Bedrooms family home featuring a dedicated study/utility room.", image: "https://picsum.photos/seed/parkside-d1/800/600" },
-    { id: "ld2", type: "Type D2", size: "926 sq ft", description: "Pragmatic 2+1 Bedrooms configuration featuring a private outdoor balcony.", image: "https://picsum.photos/seed/parkside-d2/800/600" },
-    { id: "ld3", type: "Type D3", size: "1,012 sq ft", description: "Extensive 2+1 Bedrooms residence with grand living areas for entertainment.", image: "https://picsum.photos/seed/parkside-d3/800/600" },
-    { id: "le1", type: "Type E1", size: "1,260 sq ft", description: "Generous 3 Bedrooms family sanctuary with multi-aspect garden views.", image: "https://picsum.photos/seed/parkside-e1/800/600" },
-    { id: "le2", type: "Type E2", size: "1,325 sq ft", description: "The ultimate 3 Bedrooms sky residence with uncompromised capital panoramas.", image: "https://picsum.photos/seed/parkside-e2/800/600" }
+    { id: "la", type: "Type A", size: "485 sq ft", description: "Modern Studio / 1 Bedroom designed for the minimalist professional.", image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=60&w=800" },
+    { id: "lb", type: "Type B", size: "689 sq ft", description: "Spacious 1 Bedroom residence with expansive floor-to-ceiling vistas.", image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=60&w=800" },
+    { id: "lc1", type: "Type C1", size: "646 sq ft", description: "Bespoke 2 Bedrooms layout crafted for urban dual-living comfort.", image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=60&w=800" },
+    { id: "lc2", type: "Type C2", size: "732 sq ft", description: "Refined 2 Bedrooms suite offering a perfect balance of space and light.", image: "https://images.unsplash.com/photo-1502005229762-fc1b2b812ca5?auto=format&fit=crop&q=60&w=800" },
+    { id: "ld1", type: "Type D1", size: "872 sq ft", description: "Versatile 2+1 Bedrooms family home featuring a dedicated study/utility room.", image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=60&w=800" },
+    { id: "ld2", type: "Type D2", size: "926 sq ft", description: "Pragmatic 2+1 Bedrooms configuration featuring a private outdoor balcony.", image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=60&w=800" },
+    { id: "ld3", type: "Type D3", size: "1,012 sq ft", description: "Extensive 2+1 Bedrooms residence with grand living areas for entertainment.", image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&q=60&w=800" },
+    { id: "le1", type: "Type E1", size: "1,260 sq ft", description: "Generous 3 Bedrooms family sanctuary with multi-aspect garden views.", image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=60&w=800" },
+    { id: "le2", type: "Type E2", size: "1,325 sq ft", description: "The ultimate 3 Bedrooms sky residence with uncompromised capital panoramas.", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=60&w=800" }
   ],
   location: {
     title: "The Ultimate Convergence",
     description: "Nestled between the heritage of Bangsar and the pulse of KL Sentral, Parkside Residence offers an unmatched strategic position.",
-    mapImage: "https://picsum.photos/seed/parkside-loc/1600/900",
+    mapImage: "https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?auto=format&fit=crop&q=60&w=1200",
     points: [
       { id: "p1", title: "Bangsar LRT", distance: "400m" },
       { id: "p2", title: "KL Sentral", distance: "One Stop" },
@@ -116,8 +116,8 @@ export const INITIAL_CONTENT: AppContent = {
     title: "Parkside Residence Setia Federal Hill | Luxury Condo Bangsar KL | Info",
     description: "Parkside Residence at Setia Federal Hill, Bangsar. Luxury bespoke apartments near KL Sentral starting from RM650k. 5-Acre Central Park & 360° Skyline Views. Official project info and private viewings.",
     keywords: "Parkside Residence Setia Federal Hill, Bangsar Luxury Condo, KL Sentral Property, Setia Federal Hill Price, SP Setia Bangsar, Mitsui Fudosan Malaysia, New Launch Bangsar 2024, KL Luxury Suite, Transit Oriented Development KL, Parkside Residence Official",
-    favicon: "https://picsum.photos/seed/parkside-favicon/32/32",
+    favicon: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=60&w=32&h=32",
     googleVerification: "lr6xI3xd4NTi1aBbVOrVO19BPJsw9yNVDJ1FC4JGmEQ",
-    ogImage: "https://picsum.photos/seed/parkside-og/1200/630"
+    ogImage: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=65&w=1200"
   }
 };

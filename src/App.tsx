@@ -8,6 +8,7 @@ import {
 import { useAdmin } from './context/AdminContext';
 import { AdminPanel } from './components/AdminPanel';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { optimizeImage } from './lib/utils';
 
 import { INITIAL_CONTENT } from './constants';
 
@@ -113,9 +114,9 @@ export default function App() {
         }`}>
           <div className="max-w-screen-2xl mx-auto px-8 md:px-16 flex justify-between items-center">
             <div className="flex items-center gap-4">
-              {content.logo ? (
+              {optimizeImage(content.logo, { width: 300 }) ? (
                 <img 
-                  src={content.logo} 
+                  src={optimizeImage(content.logo, { width: 300 })} 
                   alt={content.projectName} 
                   className={`h-10 w-auto object-contain transition-all duration-700 ${!isScrolled ? 'brightness-0 invert' : ''}`} 
                 />
@@ -189,11 +190,11 @@ export default function App() {
               animate={{ scale: 1 }}
               transition={{ duration: 3, ease: [0.22, 1, 0.36, 1] }}
               className="absolute inset-0 z-0 cursor-zoom-in"
-              onClick={() => { setSelectedGalleryImg({ url: content.hero.image, title: content.hero.title }); setIsGalleryOpen(true); }}
+              onClick={() => { setSelectedGalleryImg({ url: optimizeImage(content.hero.image, { width: 1600, quality: 75 }), title: content.hero.title }); setIsGalleryOpen(true); }}
             >
               <div className="absolute inset-0 bg-prestige-onyx/30 z-10" />
               <img 
-                src={content.hero.image || null} 
+                src={optimizeImage(content.hero.image, { width: 1440, quality: 65 }) || undefined} 
                 alt="Luxury living at Parkside Residence Setia Federal Hill Bangsar Kuala Lumpur" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -266,10 +267,10 @@ export default function App() {
                   viewport={{ once: true }}
                   transition={{ duration: 1.5 }}
                   className="cursor-zoom-in w-full max-w-md lg:max-w-none"
-                  onClick={() => { setSelectedGalleryImg({ url: content.overview.image, title: content.overview.title }); setIsGalleryOpen(true); }}
+                  onClick={() => { setSelectedGalleryImg({ url: optimizeImage(content.overview.image, { width: 1600, quality: 75 }), title: content.overview.title }); setIsGalleryOpen(true); }}
                 >
                   <img 
-                    src={content.overview.image || null} 
+                    src={optimizeImage(content.overview.image, { width: 1000, quality: 60 }) || undefined} 
                     alt="Parkside Residence Setia Federal Hill - 5-Acre Central Park View" 
                     className="w-full h-[500px] md:h-[700px] object-cover rounded-none oval-mask"
                     loading="lazy"
@@ -301,12 +302,12 @@ export default function App() {
                   transition={{ delay: i * 0.1, duration: 1 }}
                   viewport={{ once: true }}
                   className="flex flex-col items-center text-center group"
-                  onClick={() => { setSelectedGalleryImg({ url: feature.image, title: feature.title }); setIsGalleryOpen(true); }}
+                  onClick={() => { setSelectedGalleryImg({ url: optimizeImage(feature.image, { width: 1200, quality: 70 }), title: feature.title }); setIsGalleryOpen(true); }}
                 >
                   <div className="relative mb-10 cursor-zoom-in">
                     <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border border-prestige-gold/20 transition-all duration-700 group-hover:scale-105 group-hover:border-prestige-gold">
                       <img 
-                        src={feature.image || null} 
+                        src={optimizeImage(feature.image, { width: 400, quality: 60 }) || undefined} 
                         alt={`${feature.title} - Parkside Residence Luxury Feature`} 
                         className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0"
                         loading="lazy"
@@ -402,10 +403,10 @@ export default function App() {
                     className="bg-white p-12 md:p-24 shadow-sm border border-black/5 flex flex-col items-center"
                   >
                     <img 
-                      src={selectedLayout.image || null} 
+                      src={optimizeImage(selectedLayout.image, { width: 900, quality: 60 }) || undefined} 
                       alt={`${selectedLayout.type} Floorplan - ${selectedLayout.size} Luxury Apartment Bangsar`} 
                       className="max-w-full h-auto object-contain max-h-[500px] mb-16 grayscale hover:grayscale-0 transition-all duration-1000 cursor-zoom-in"
-                      onClick={() => { setSelectedGalleryImg({ url: selectedLayout.image, title: `${selectedLayout.type} - ${selectedLayout.size}` }); setIsGalleryOpen(true); }}
+                      onClick={() => { setSelectedGalleryImg({ url: optimizeImage(selectedLayout.image, { width: 1400, quality: 70 }), title: `${selectedLayout.type} - ${selectedLayout.size}` }); setIsGalleryOpen(true); }}
                       loading="lazy"
                       decoding="async"
                     />
@@ -456,10 +457,10 @@ export default function App() {
                    viewport={{ once: true }}
                    transition={{ duration: 1.5 }}
                    className="relative z-10 cursor-zoom-in w-full max-w-lg lg:max-w-none"
-                   onClick={() => { setSelectedGalleryImg({ url: content.location.mapImage, title: "Strategic Map - Setia Federal Hill" }); setIsGalleryOpen(true); }}
+                   onClick={() => { setSelectedGalleryImg({ url: optimizeImage(content.location.mapImage, { width: 1600, quality: 75 }), title: "Strategic Map - Setia Federal Hill" }); setIsGalleryOpen(true); }}
                 >
                   <img 
-                    src={content.location.mapImage || null} 
+                    src={optimizeImage(content.location.mapImage, { width: 1200, quality: 60 }) || undefined} 
                     alt="Strategic Map: Parkside Residence near Bangsar LRT and KL Sentral" 
                     className="w-full h-[400px] md:h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-1000"
                     loading="lazy"
@@ -491,11 +492,11 @@ export default function App() {
                   whileInView={{ opacity: [0, 1], y: [40, 0] }}
                   transition={{ delay: i * 0.15, duration: 1 }}
                   viewport={{ once: true }}
-                  onClick={() => { setSelectedGalleryImg(item); setIsGalleryOpen(true); }}
+                  onClick={() => { setSelectedGalleryImg({ ...item, url: optimizeImage(item.url, { width: 1600, quality: 75 }) }); setIsGalleryOpen(true); }}
                   className="aspect-[4/5] overflow-hidden group cursor-pointer relative"
                  >
                    <img 
-                    src={item.url || null} 
+                    src={optimizeImage(item.url, { width: 600, quality: 60 }) || undefined} 
                     alt={`${item.title} - Interior view of Parkside Residence Luxury Condo`} 
                     className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:scale-110 group-hover:grayscale-0"
                     loading="lazy"
@@ -598,7 +599,7 @@ export default function App() {
                 <motion.img 
                   initial={{ y: 20, scale: 0.95 }}
                   animate={{ y: 0, scale: 1 }}
-                  src={selectedGalleryImg.url || null} 
+                  src={optimizeImage(selectedGalleryImg.url, { width: 1600, quality: 75 }) || undefined} 
                   alt={selectedGalleryImg.title} 
                   className="max-w-full max-h-[70vh] object-contain shadow-2xl mb-12"
                 />

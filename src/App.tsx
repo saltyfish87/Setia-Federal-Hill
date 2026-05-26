@@ -59,6 +59,7 @@ export default function App() {
           <meta name="description" content={content.seo.description} />
           <meta name="keywords" content={content.seo.keywords} />
           <link rel="icon" type="image/png" href={content.seo.favicon} />
+          <link rel="canonical" href="https://setiafederalhill-parkside.my" />
           <meta name="google-site-verification" content={content.seo.googleVerification || INITIAL_CONTENT.seo.googleVerification} />
           
           {/* Structured Data (JSON-LD) - Real Estate Listing */}

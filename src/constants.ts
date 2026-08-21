@@ -103,7 +103,7 @@ export const INITIAL_CONTENT: AppContent = {
     ren: "46505",
     agency: "IQI Agency",
     agencyReg: "IQI Holdings SDN BHD",
-    whatsapp: "60195598932",
+    whatsapp: "60108278932",
     message: "[PRS] please schedule viewing for Parkside Residence"
   },
   legal: {

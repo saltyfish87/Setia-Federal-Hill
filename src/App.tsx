@@ -59,7 +59,15 @@ export default function App() {
           <meta name="description" content={content.seo.description} />
           <meta name="keywords" content={content.seo.keywords} />
           <link rel="icon" type="image/png" href={content.seo.favicon} />
-          <link rel="canonical" href="https://setiafederalhill-parkside.my" />
+          <link rel="canonical" href="https://setiafederalhill-parkside.my/" />
+          
+          {/* Dynamic Robots Instructions to keep staging/review crawler noise out of Google Search Console reports */}
+          {typeof window !== 'undefined' && (window.location.hostname === 'setiafederalhill-parkside.my' || window.location.hostname === 'www.setiafederalhill-parkside.my') ? (
+            <meta name="robots" content="index, follow, max-image-preview:large" />
+          ) : (
+            <meta name="robots" content="noindex, nofollow" />
+          )}
+
           <meta name="google-site-verification" content={content.seo.googleVerification || INITIAL_CONTENT.seo.googleVerification} />
           
           {/* Structured Data (JSON-LD) - Real Estate Listing */}
@@ -81,7 +89,8 @@ export default function App() {
                 "latitude": "3.1293",
                 "longitude": "101.6811"
               },
-              "url": "https://setiafederalhill-parkside.my",
+              "url": "https://setiafederalhill-parkside.my/",
+              "telephone": `+${content.agent.whatsapp.replace(/\D/g, '')}`,
               "brand": {
                 "@type": "Brand",
                 "name": "Setia Federal Hill"

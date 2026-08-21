@@ -37,7 +37,11 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const unsubscribeContent = onSnapshot(doc(db, 'config', 'content'), 
       (snapshot) => {
         if (snapshot.exists()) {
-          setContentState(snapshot.data() as AppContent);
+          const data = snapshot.data() as AppContent;
+          if (data.agent && data.agent.whatsapp === "60195598932") {
+            data.agent.whatsapp = INITIAL_CONTENT.agent.whatsapp;
+          }
+          setContentState(data);
         }
         // We don't auto-initialize here to avoid permission errors for non-admins
         setLoading(false);
@@ -54,21 +58,23 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     };
   }, []);
 
-  // AUTO-SYNC: Force the 9 layouts and SEO updates into Firestore without overwriting other sections
+  // AUTO-SYNC: Force the 9 layouts, SEO updates, and CTA updates into Firestore without overwriting other sections
   useEffect(() => {
     const syncData = async () => {
       // Only run if we are logged in as admin
       if (user && isAdmin && loading === false) {
         const needsLayoutsSync = content.layouts.length < 9;
         const needsSeoSync = !content.seo.googleVerification && INITIAL_CONTENT.seo.googleVerification;
+        const needsAgentSync = content.agent?.whatsapp === "60195598932";
 
-        if (needsLayoutsSync || needsSeoSync) {
+        if (needsLayoutsSync || needsSeoSync || needsAgentSync) {
           console.log("Database out of sync. Upgrading content...");
           try {
             // Merge current content with the new values
             const updatedContent = {
               ...content,
               layouts: needsLayoutsSync ? INITIAL_CONTENT.layouts : content.layouts,
+              agent: needsAgentSync ? { ...content.agent, whatsapp: INITIAL_CONTENT.agent.whatsapp } : content.agent,
               seo: {
                 ...content.seo,
                 googleVerification: content.seo.googleVerification || INITIAL_CONTENT.seo.googleVerification
@@ -82,7 +88,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       }
     };
     syncData();
-  }, [user, isAdmin, loading, content.layouts.length, content.seo.googleVerification]);
+  }, [user, isAdmin, loading, content.layouts.length, content.seo.googleVerification, content.agent?.whatsapp]);
 
   const login = async () => {
     await signInWithPopup(auth, googleProvider);

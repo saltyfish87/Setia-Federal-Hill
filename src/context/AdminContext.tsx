@@ -41,6 +41,10 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
           if (data.agent && data.agent.whatsapp === "60195598932") {
             data.agent.whatsapp = INITIAL_CONTENT.agent.whatsapp;
           }
+          if (data.agent && (data.agent.ren === "46505" || data.agent.agency === "IQI Agency")) {
+            data.agent = { ...data.agent, ren: INITIAL_CONTENT.agent.ren, agency: INITIAL_CONTENT.agent.agency, agencyReg: INITIAL_CONTENT.agent.agencyReg };
+            if (data.legal) data.legal = { ...data.legal, managementDisclaimer: INITIAL_CONTENT.legal.managementDisclaimer };
+          }
           setContentState(data);
         }
         // We don't auto-initialize here to avoid permission errors for non-admins
@@ -65,7 +69,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       if (user && isAdmin && loading === false) {
         const needsLayoutsSync = content.layouts.length < 9;
         const needsSeoSync = !content.seo.googleVerification && INITIAL_CONTENT.seo.googleVerification;
-        const needsAgentSync = content.agent?.whatsapp === "60195598932";
+        const needsAgentSync = content.agent?.whatsapp === "60195598932" || content.agent?.ren === "46505" || content.agent?.agency === "IQI Agency";
 
         if (needsLayoutsSync || needsSeoSync || needsAgentSync) {
           console.log("Database out of sync. Upgrading content...");
@@ -74,7 +78,8 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
             const updatedContent = {
               ...content,
               layouts: needsLayoutsSync ? INITIAL_CONTENT.layouts : content.layouts,
-              agent: needsAgentSync ? { ...content.agent, whatsapp: INITIAL_CONTENT.agent.whatsapp } : content.agent,
+              agent: needsAgentSync ? { ...content.agent, whatsapp: INITIAL_CONTENT.agent.whatsapp, ren: INITIAL_CONTENT.agent.ren, agency: INITIAL_CONTENT.agent.agency, agencyReg: INITIAL_CONTENT.agent.agencyReg } : content.agent,
+              legal: needsAgentSync ? { ...content.legal, managementDisclaimer: INITIAL_CONTENT.legal.managementDisclaimer } : content.legal,
               seo: {
                 ...content.seo,
                 googleVerification: content.seo.googleVerification || INITIAL_CONTENT.seo.googleVerification
@@ -88,7 +93,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       }
     };
     syncData();
-  }, [user, isAdmin, loading, content.layouts.length, content.seo.googleVerification, content.agent?.whatsapp]);
+  }, [user, isAdmin, loading, content.layouts.length, content.seo.googleVerification, content.agent?.whatsapp, content.agent?.ren, content.agent?.agency]);
 
   const login = async () => {
     await signInWithPopup(auth, googleProvider);

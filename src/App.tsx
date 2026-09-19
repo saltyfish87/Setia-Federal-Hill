@@ -59,7 +59,7 @@ export default function App() {
           <meta name="description" content={content.seo.description} />
           <meta name="keywords" content={content.seo.keywords} />
           <link rel="icon" type="image/png" href={content.seo.favicon} />
-          <link rel="canonical" href="https://setiafederalhill-parkside.my/" />
+          <link rel="canonical" href="https://www.setiafederalhill-parkside.my/" />
           
           {/* Dynamic Robots Instructions to keep staging/review crawler noise out of Google Search Console reports */}
           {typeof window !== 'undefined' && (window.location.hostname === 'setiafederalhill-parkside.my' || window.location.hostname === 'www.setiafederalhill-parkside.my') ? (
@@ -70,8 +70,8 @@ export default function App() {
 
           <meta name="google-site-verification" content={content.seo.googleVerification || INITIAL_CONTENT.seo.googleVerification} />
           
-          {/* Structured Data (JSON-LD) - Real Estate Listing */}
-          <script type="application/ld+json">
+          {/* Structured Data (JSON-LD) - Real Estate Listing. Skipped when index.html already ships the static graph. */}
+          {typeof document !== 'undefined' && !document.getElementById('seo-static-graph') && (<script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://schema.org",
               "@type": "ApartmentComplex",
@@ -89,7 +89,7 @@ export default function App() {
                 "latitude": "3.1293",
                 "longitude": "101.6811"
               },
-              "url": "https://setiafederalhill-parkside.my/",
+              "url": "https://www.setiafederalhill-parkside.my/",
               "telephone": `+${content.agent.whatsapp.replace(/\D/g, '')}`,
               "brand": {
                 "@type": "Brand",
@@ -101,9 +101,10 @@ export default function App() {
                 "value": true
               }))
             })}
-          </script>
+          </script>)}
 
           {/* Open Graph / Social */}
+          <meta property="og:url" content="https://www.setiafederalhill-parkside.my/" />
           <meta property="og:title" content={content.seo.title} />
           <meta property="og:description" content={content.seo.description} />
           <meta property="og:image" content={content.seo.ogImage} />

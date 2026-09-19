@@ -100,9 +100,9 @@ export const INITIAL_CONTENT: AppContent = {
   ],
   agent: {
     name: "Yee Woei Shyan",
-    ren: "46505",
-    agency: "IQI Agency",
-    agencyReg: "IQI Holdings SDN BHD",
+    ren: "46305",
+    agency: "IQI Realty Sdn Bhd",
+    agencyReg: "IQI Realty Sdn Bhd (E(1)1584)",
     whatsapp: "60108278932",
     message: "[PRS] please schedule viewing for Parkside Residence"
   },
@@ -110,7 +110,7 @@ export const INITIAL_CONTENT: AppContent = {
     privacyPolicy: "As a premier advisory, your data privacy is paramount. Information is handled strictly according to the Malaysian PDPA 2010.",
     termsConditions: "Visuals are architectural representations. Final specifications are subject to the sales and purchase agreement.",
     disclaimer: "Information provided is for preliminary awareness and does not constitute a legal offer.",
-    managementDisclaimer: "This curated collection is managed by Yee Woei Shyan (REN 46505) of IQI Agency. Privately presented for discerning investors."
+    managementDisclaimer: "This curated collection is managed by Yee Woei Shyan (REN 46305) of IQI Realty Sdn Bhd. Privately presented for discerning investors."
   },
   seo: {
     title: "Parkside Residence Setia Federal Hill | Luxury Condo Bangsar KL | Info",
@@ -118,6 +118,6 @@ export const INITIAL_CONTENT: AppContent = {
     keywords: "Parkside Residence Setia Federal Hill, Bangsar Luxury Condo, KL Sentral Property, Setia Federal Hill Price, SP Setia Bangsar, Mitsui Fudosan Malaysia, New Launch Bangsar 2024, KL Luxury Suite, Transit Oriented Development KL, Parkside Residence Official",
     favicon: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=60&w=32&h=32",
     googleVerification: "lr6xI3xd4NTi1aBbVOrVO19BPJsw9yNVDJ1FC4JGmEQ",
-    ogImage: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=65&w=1200"
+    ogImage: "https://lh3.googleusercontent.com/d/1ToLFN2uf2nItxY5Gkit6N6OPuLs8KIc1=w1200"
   }
 };

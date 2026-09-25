@@ -4,6 +4,7 @@ import { Settings, LogOut, LogIn, Save, Upload, Plus, Trash2, X, MessageCircle, 
 import { useAdmin } from '../context/AdminContext';
 import { AppContent } from '../types';
 import { INITIAL_CONTENT } from '../constants';
+import { compressImageFile } from '../lib/utils';
 
 export const AdminPanel: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
   const { user, isAdmin, content, setContent, login, logout, uploadImage } = useAdmin();
@@ -75,7 +76,8 @@ export const AdminPanel: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
     const file = e.target.files?.[0];
     if (file) {
       try {
-        const url = await uploadImage(file);
+        const compressed = await compressImageFile(file, 1920, 0.82);
+        const url = await uploadImage(compressed);
         callback(url);
       } catch (err) {
         console.error(err);

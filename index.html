@@ -9,6 +9,13 @@
     <link rel="canonical" href="https://www.setiafederalhill-parkside.my/" />
     <meta name="google-site-verification" content="lr6xI3xd4NTi1aBbVOrVO19BPJsw9yNVDJ1FC4JGmEQ" />
     
+    <!-- Image CDN Preconnects & High-Priority LCP Hero Preload -->
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin />
+    <link rel="preconnect" href="https://firebasestorage.googleapis.com" crossorigin />
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=65&w=1440&fm=webp" fetchpriority="high" />
+
     <!-- Dynamic Robots Control: Index only the production custom domain, keep dev/staging environments out of Google Search Console -->
     <script>
       (function() {

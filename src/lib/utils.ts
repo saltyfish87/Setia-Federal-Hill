@@ -32,6 +32,7 @@ interface OptimizeOptions {
  * 1. Automatically converts slow Picsum.photos placeholders to high-performance, beautiful Unsplash images.
  * 2. Rewrites Unsplash parameters to enforce modern 'webp' web compression format,
  *    appropriate fluid width bounds, and high-efficiency quality setting (defaults to q=60).
+ * 3. Rewrites Google Drive & Google User Content (lh3) URLs to use Google's fast WebP edge thumbnail cache.
  */
 export function optimizeImage(url: string | undefined | null, options: OptimizeOptions = {}): string {
   if (!url) return '';
@@ -72,5 +73,81 @@ export function optimizeImage(url: string | undefined | null, options: OptimizeO
     }
   }
 
+  // 3. Optimize Google Drive & Google User Content links
+  // Convert slow direct Google Drive links to Google's fast WebP edge server
+  if (targetUrl.includes('drive.google.com') || targetUrl.includes('googleusercontent.com')) {
+    const width = options.width || 1200;
+    // Check for drive ID in path or query
+    const driveMatch = targetUrl.match(/\/d\/([a-zA-Z0-9_-]+)/) || targetUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+    if (driveMatch && driveMatch[1]) {
+      const fileId = driveMatch[1];
+      return `https://lh3.googleusercontent.com/d/${fileId}=w${width}-rw`;
+    }
+    if (targetUrl.includes('lh3.googleusercontent.com')) {
+      const base = targetUrl.split('=')[0];
+      return `${base}=w${width}-rw`;
+    }
+  }
+
   return targetUrl;
+}
+
+/**
+ * Compresses an image file on the client before uploading to cloud storage.
+ * Shrinks multi-megabyte photos (e.g. 5MB-15MB phone camera shots) to ~150-300KB WebP files.
+ */
+export async function compressImageFile(file: File, maxWidth = 1920, quality = 0.82): Promise<File> {
+  if (!file.type.startsWith('image/') || file.type === 'image/svg+xml' || file.type === 'image/gif') {
+    return file;
+  }
+
+  return new Promise((resolve) => {
+    const img = new Image();
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      img.onload = () => {
+        let width = img.width;
+        let height = img.height;
+
+        if (width > maxWidth) {
+          height = Math.round((height * maxWidth) / width);
+          width = maxWidth;
+        }
+
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          resolve(file);
+          return;
+        }
+
+        ctx.drawImage(img, 0, 0, width, height);
+
+        const outputType = 'image/webp';
+        canvas.toBlob(
+          (blob) => {
+            if (!blob || blob.size >= file.size) {
+              resolve(file);
+              return;
+            }
+            const compressedName = file.name.replace(/\.[^/.]+$/, "") + ".webp";
+            const compressedFile = new File([blob], compressedName, {
+              type: outputType,
+              lastModified: Date.now()
+            });
+            resolve(compressedFile);
+          },
+          outputType,
+          quality
+        );
+      };
+      img.onerror = () => resolve(file);
+      img.src = e.target?.result as string;
+    };
+    reader.onerror = () => resolve(file);
+    reader.readAsDataURL(file);
+  });
 }
